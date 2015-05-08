@@ -12,6 +12,9 @@ matrix:
       env: TEST_REQUIREMENTS=social/tests/requirements-python3.txt
     - python: "3.4"
       env: TEST_REQUIREMENTS=social/tests/requirements-python3.txt
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y libxmlsec1-dev swig
 install:
   - "python setup.py -q install"
   - "travis_retry pip install -r $TEST_REQUIREMENTS"
